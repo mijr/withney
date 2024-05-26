@@ -109,7 +109,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-6 offset-md-3">
-                  <form id="request" class="main_form">
+                  <form  class="main_form" id="contactForm" onsubmit="submitForm(event)">
                      <div class="row">
                         <div class="col-md-12 ">
                            <input class="contactus" placeholder="Full Name" type="type" name="Full Name"> 
@@ -124,7 +124,7 @@
                            <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message</textarea>
                         </div>
                         <div class="col-md-12">
-                           <button class="send_btn">Send</button>
+                           <button type="submit" class="send_btn">Send</button>
                         </div>
                      </div>
                   </form>
@@ -191,6 +191,33 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
+      <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    (function () {
+        emailjs.init("miguelmaadoum@gmail.com");
+    })();
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        // Collect form data
+        const form = document.getElementById('contactForm');
+        const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value
+        };
+
+        // Send the email
+        emailjs.send("miguelmaadoum@gmail.com", "YOUR_TEMPLATE_ID_HERE", formData)
+            .then(function (response) {
+                alert('Email sent successfully!');
+                form.reset();
+            }, function (error) {
+                alert('Error sending email: ', error);
+            });
+    }
+</script>
       <script src="jquery.min.js"></script>
       <script src="bootstrap.bundle.min.js"></script>
       <script src="jquery-3.0.0.min.js"></script>
