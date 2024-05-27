@@ -303,11 +303,36 @@ button {
 .navigation.navbar-dark .navbar-nav .show>.nav-link {
      color: #fff;
      background-color: #2e2d2d;
+ 
+ @media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+        transition: .5s;
+        opacity: 0;
+    }
 }
+}
+.nnavigation.navbar-dark .navbar-nav {
+    border: none;
+    content: "\f107";
+    font-family: "font awesome 5 free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+
+
+
 
 .navbar-expand-md .navbar-nav {
      padding-right: 10px;
 }
+
 
 ul.social_icon {
      padding-top: 3px;
