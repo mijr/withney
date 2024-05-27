@@ -1,4 +1,22 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+   $phone = $_POST['phone'];
+    $message = $_POST['message'];
 
+    $to = "miguel.tankeu14@gmail.com";
+    $subject = "Contact Form Submission";
+    $messageBody = "Name: $name\nEmail: Phone: $phone\nEmail: $email\nMessage: $message";
+
+    // Send email
+    if (mail($to, $subject, $messageBody)) {
+        echo "Data sent successfully";
+    } else {
+        echo "Failed to send email";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,19 +127,19 @@
          <div class="container">
             <div class="row">
                <div class="col-md-6 offset-md-3">
-                  <form  class="main_form" id="contactForm" onsubmit="submitForm(event)">
+                  <form action="send_email.php" method="post"  class="main_form" id="contactForm">
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="contactus" id="name" placeholder="Full Name" type="type" name="Full Name"> 
+                           <input class="contactus" id="name" placeholder="Full Name" type="type" name="name"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" id="email" placeholder="Email " type="type" name="Email "> 
+                           <input class="contactus" id="email" placeholder="Email " type="type" name="email "> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" id="phone" placeholder="Phone Number" type="type" name="Phone Number">                          
+                           <input class="contactus" id="phone" placeholder="Phone Number" type="type" name="honer">                          
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" id="message" placeholder="Message" type="type" Message="Name">Message</textarea>
+                           <textarea class="textarea" id="message" placeholder="Message" type="type" name="message">Message</textarea>
                         </div>
                         <div class="col-md-12">
                            <button type="submit" class="send_btn">Send</button>
